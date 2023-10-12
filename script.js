@@ -35,9 +35,9 @@ const books = [
            <p class="book__author">${book.authors}</p>
            <p class="book__year">${book.year}</p>
            <img class="book__image" src="${book.image}"/>
-           <div>
-             <button>Изменить</button>
-             <button>Удалить</button>
+           <div class="book__buttons">
+             <button class="book__button">Изменить</button>
+             <button class="book__button">Удалить</button>
            </div>
         </div>
            `
