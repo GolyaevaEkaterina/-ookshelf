@@ -22,7 +22,8 @@ const books = [
       authors: 'Михаил Юрьевич Лермонтов',
       year: 1840,
       image:'/images/Lermontov.jpg'
-    }
+    },
+ 
 
     ]
 
@@ -43,3 +44,18 @@ const books = [
            `
     })
 
+
+    let isOpen = false
+
+function openForm(){
+    const bookForm = document.getElementById("section-dop")
+    
+    if (isOpen){
+       bookForm.style.display = "flex"
+       isOpen = true
+    }else{
+        bookForm.style.display = "none"
+        isOpen = false
+    }
+
+  }
