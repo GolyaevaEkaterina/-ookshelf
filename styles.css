@@ -8,7 +8,7 @@
 body{
     font-family: Poiret One;
     background: linear-gradient(to right, #f5f7fa7b, rgba(255, 255, 255, 0.564) ), url(/images/background.jpg);
-   
+    padding-bottom: 50px;
 }
 
 header{
@@ -129,8 +129,22 @@ main{
     padding: 30px;
     border: 1px solid var(--color-border);
     box-shadow: 5px 5px 10px rgb(92, 91, 91);
-
+    position: relative;
 }
+.new-book__form_close{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    border: none;
+    font-size: 20px;
+    background-color: var(--color-main);
+    color: grey;
+}
+.new-book__form_close:hover{
+    color: var(--color-border);
+    cursor: pointer;
+}
+
 .new-book__form_label{
     font-size: 20px;
 }

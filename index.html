@@ -21,7 +21,7 @@
 
           <div class="section__add-book">
             <div class="add-book">
-              <button class="add-book__button" onclick="openForm()">Добавить книгу</button>
+              <button onclick="openForm()" class="add-book__button" >Добавить книгу</button>
             </div>
           </div>
          
@@ -34,9 +34,10 @@
   
         </main>
 
-        <div class="section-dop" id="section-dop">
+        <div class="section-dop" id="Form">
           <div class="new-book">
             <div class="new-book__form">
+              <button onclick="closeForm()" class="new-book__form_close"><i class="fa-solid fa-xmark"></i></button>
               <label class="new-book__form_label" for="bookTitle">Название</label>
               <input class="new-book__form_input" id="bookTitle" type="text" name="Title"/>
               <label class="new-book__form_label" for="bookAutor">Автор</label>
@@ -45,7 +46,7 @@
               <input class="new-book__form_input" id="bookYear" type="number" name="Year"/>
               <label class="new-book__form_label" for="bookImage">Ссылка на изображение</label>
               <input class="new-book__form_input" id="bookImage" type="url" name="Image link"/>
-              <button class="new-book__form_button">Добавить</button>
+              <button onclick="addBook()" class="new-book__form_button">Добавить</button>
             </div>
             
           </div>
