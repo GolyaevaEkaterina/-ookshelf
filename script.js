@@ -1,23 +1,27 @@
 const books = [
     {
+      id: 1,
       title: 'Отверженные',
       authors: 'Виктор Мари Гюго',
       year: '1862',
       image: '/images/Hugo.jpg'
     },
     {
+      id: 2,
       title: 'Братья Карамазовы',
       authors: 'Федор Михайлович Достоевский',
       year: '1880',
       image: '/images/Dostoevsky.png'
     },
     {
+      id: 3,
       title:'Мартин Иден',
       authors: 'Джек Лондон',
       year: '1909',
       image:'/images/London.jpeg'
     },
     {
+      id: 4,
       title:'Герой нашего времени',
       authors: 'Михаил Юрьевич Лермонтов',
       year: 1840,
@@ -39,8 +43,8 @@ function renderBooks(){
        <p class="book__year">${book.year}</p>
        <img class="book__image" src="${book.image}"/>
        <div class="book__buttons">
-         <button class="book__button">Изменить</button>
-         <button class="book__button">Удалить</button>
+         <button class="book__button ">Изменить</button>
+         <button onclick = "deleteBook(${book.id})" class="book__button book__button_delete">Удалить</button>
        </div>
     </div>
        `
@@ -59,6 +63,13 @@ function closeForm(){
   bookForm.style.display = "none"   
 }
 
+function clearForm(){
+  document.getElementById('bookTitle').value = ""
+  document.getElementById('bookAutor').value = ""
+  document.getElementById('bookYear').value = ""
+  document.getElementById('bookImage').value = ""
+}
+
 function addBook(){
   const Title = document.getElementById('bookTitle').value
   const Autor = document.getElementById('bookAutor').value
@@ -75,14 +86,23 @@ function addBook(){
   books.push(book)
 
   renderBooks()
-  
   closeForm()
+  clearForm()
+}
 
-  document.getElementById('bookTitle').value = ""
-  document.getElementById('bookAutor').value = ""
-  document.getElementById('bookYear').value = ""
-  document.getElementById('bookImage').value = ""
+function deleteBook(id){
+  const book = books.find((b) => {
+    return b.id === id
+  })
 
+  const bookIndex = books.indexOf(book)
+
+  books.splice(bookIndex, 1)
+
+  renderBooks()
+
+  console.log(books)
 }
 
 renderBooks()
+

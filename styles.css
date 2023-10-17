@@ -1,6 +1,7 @@
 :root{
     --color-main: #E8E6E1;
     --color-border: black;
+    --color-hover: #D3CEC4;
 }
 *{
     box-sizing: border-box;
@@ -52,7 +53,7 @@ main{
     border: 1px solid rgb(55, 54, 54);
 }
 .add-book__button:hover{
-    background-color: #D3CEC4;
+    background-color: var(--color-hover);
     cursor: pointer;
 }
 .container-books{
@@ -104,6 +105,10 @@ main{
     font-weight: 400;
     background-color: var(--color-main);
     border: 1px solid rgb(55, 54, 54);
+}
+.book__button:hover{
+    background-color: var(--color-hover);
+    cursor: pointer;
 }
 .section-dop{
     display: none;
@@ -169,6 +174,68 @@ main{
     border: 1px solid rgb(55, 54, 54);
 }
 .new-book__form_button:hover{
-    background-color: #D3CEC4;
+    background-color: var(--color-hover);
     cursor: pointer;
+}
+@media(max-width: 768px){
+    .add-book{
+        padding-right: 10px; 
+    }
+    .container-books{
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    .book{
+        width: calc((100% - 20px * 2 ) / 3);
+    }
+}
+@media(max-width: 600px){
+    body{
+        background-position: center;
+    }
+    header{
+        margin-top: 50px;
+        margin-bottom: 30px;
+    }
+    .header__title{
+        font-size: 40px;
+        word-spacing: 10px;
+        letter-spacing: 20px;
+    }
+    .add-book__button{
+        font-size: 18px;
+    }
+    .add-book{
+        padding-right: 5px; 
+    }
+    .container-books{
+        padding-left: 5px;
+        padding-right: 5px;
+        gap: 15px;
+    }
+    .book{
+        width: calc((100% - 15px) / 2);
+        padding: 5px;
+    }
+    .book__image{
+        width: 70px;
+        height: 100px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    .book__title{
+        font-size: 20px;
+        height: 40px;
+    }
+    .book__author{
+        font-size: 14px;
+        height: 30px;
+    }
+    
+    .book__buttons{
+       height: 25px;
+    }
+    .book__button{
+        font-size: 14px;
+    }
 }
