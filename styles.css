@@ -51,6 +51,7 @@ main{
     font-weight: 400;
     background-color: var(--color-main);
     border: 1px solid rgb(55, 54, 54);
+    color: var(--color-border);
 }
 .add-book__button:hover{
     background-color: var(--color-hover);
@@ -105,6 +106,7 @@ main{
     font-weight: 400;
     background-color: var(--color-main);
     border: 1px solid rgb(55, 54, 54);
+    color: var(--color-border);
 }
 .book__button:hover{
     background-color: var(--color-hover);
@@ -172,6 +174,7 @@ main{
     font-weight: 400;
     background-color: var(--color-main);
     border: 1px solid rgb(55, 54, 54);
+    color: var(--color-border);
 }
 .new-book__form_button:hover{
     background-color: var(--color-hover);
@@ -236,6 +239,7 @@ main{
        height: 25px;
     }
     .book__button{
-        font-size: 14px;
+        font-size: 12px;
+        width: 70px;
     }
 }
