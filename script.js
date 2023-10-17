@@ -44,7 +44,7 @@ function renderBooks(){
        <img class="book__image" src="${book.image}"/>
        <div class="book__buttons">
          <button class="book__button ">Изменить</button>
-         <button onclick = "deleteBook(${book.id})" class="book__button book__button_delete">Удалить</button>
+         <button onclick="deleteBook(${book.id})" class="book__button book__button_delete">Удалить</button>
        </div>
     </div>
        `
@@ -106,3 +106,14 @@ function deleteBook(id){
 
 renderBooks()
 
+const buttonOpenForm = document.getElementById('OpenForm-button')
+buttonOpenForm.addEventListener('click', openForm)
+
+const buttonCloseForm = document.getElementById('Form__Close-button')
+buttonCloseForm.addEventListener('click', closeForm)
+
+const buttonAddBook = document.getElementById('Form__Add-book')
+buttonAddBook.addEventListener('click', addBook)
+
+//const buttonDeleteBook = document.getElementsByClassName('book__button_delete')
+//buttonDeleteBook.addEventListener('click', deleteBook)// -- не работает код
