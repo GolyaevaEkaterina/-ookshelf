@@ -1,4 +1,4 @@
-const books = [
+let books = [
     {
       id: 1,
       title: 'Отверженные',
@@ -51,6 +51,11 @@ function renderBooks(){
   })
 }
 
+function addToLocalStorage(){
+  const booksJson = JSON.stringify (books)
+  localStorage.setItem("books", booksJson)  //Какая разница между "" и '' ?//
+}
+
 function openForm(){
     const bookForm = document.getElementById("Form")
     
@@ -88,6 +93,8 @@ function addBook(){
   renderBooks()
   closeForm()
   clearForm()
+
+  addToLocalStorage()
 }
 
 function deleteBook(id){
@@ -101,9 +108,14 @@ function deleteBook(id){
 
   renderBooks()
 
-  console.log(books)
+  addToLocalStorage() 
 }
 
+const booksJson = localStorage.getItem("books")
+const savedBooks = JSON.parse (booksJson)
+if (booksJson) {
+  books = savedBooks
+}
 renderBooks()
 
 const buttonOpenForm = document.getElementById('OpenForm-button')
