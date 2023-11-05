@@ -28,7 +28,6 @@ let books = [
       image:'/images/Lermontov.jpg'
     },
  
-
     ]
 
 const container = document.getElementById("container-books")
@@ -43,7 +42,7 @@ function renderBooks(){
        <p class="book__year">${book.year}</p>
        <img class="book__image" src="${book.image}"/>
        <div class="book__buttons">
-         <button class="book__button ">Изменить</button>
+         <button class="book__button" onclick="openModalEditBook()"  id="OpenForm-EditBook">Изменить</button>
          <button onclick="deleteBook(${book.id})" class="book__button book__button_delete">Удалить</button>
        </div>
     </div>
@@ -56,16 +55,28 @@ function addToLocalStorage(){
   localStorage.setItem("books", booksJson)  //Какая разница между "" и '' ?//
 }
 
-function openForm(){
-    const bookForm = document.getElementById("Form")
+function openModalNewBook(){
+    const bookForm = document.getElementById("newBook")
     
     bookForm.style.display = "flex"   
 }
 
-function closeForm(){
-  const bookForm = document.getElementById("Form")
+function closeModalNewBook(){
+  const bookForm = document.getElementById("newBook")
   
   bookForm.style.display = "none"   
+}
+
+function openModalEditBook(){
+  const bookEditForm = document.getElementById("editBook")
+  
+  bookEditForm.style.display = "flex"   
+}
+
+function closeModalEditBook(){
+const bookEditForm = document.getElementById("editBook")
+
+bookEditForm.style.display = "none"   
 }
 
 function clearForm(){
@@ -91,9 +102,8 @@ function addBook(){
   books.push(book)
 
   renderBooks()
-  closeForm()
+  closeModalNewBook()
   clearForm()
-
   addToLocalStorage()
 }
 
@@ -107,7 +117,6 @@ function deleteBook(id){
   books.splice(bookIndex, 1)
 
   renderBooks()
-
   addToLocalStorage() 
 }
 
@@ -119,13 +128,16 @@ if (booksJson) {
 renderBooks()
 
 const buttonOpenForm = document.getElementById('OpenForm-button')
-buttonOpenForm.addEventListener('click', openForm)
+buttonOpenForm.addEventListener('click', openModalNewBook)
 
-const buttonCloseForm = document.getElementById('Form__Close-button')
-buttonCloseForm.addEventListener('click', closeForm)
+const buttonCloseForm = document.getElementById('newBook__Close-button')
+buttonCloseForm.addEventListener('click', closeModalNewBook)
 
-const buttonAddBook = document.getElementById('Form__Add-book')
+const buttonAddBook = document.getElementById('newBook__Add-book')
 buttonAddBook.addEventListener('click', addBook)
+
+//const buttonOpenFormEditBook = document.getElementById('OpenForm-EditBook')
+//buttonOpenFormEditBook.addEventListener('click', openModalEditBook)//  -- не работает код
 
 //const buttonDeleteBook = document.getElementsByClassName('book__button_delete')
 //buttonDeleteBook.addEventListener('click', deleteBook)// -- не работает код

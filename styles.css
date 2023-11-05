@@ -115,7 +115,10 @@ main{
 .section-dop{
     display: none;
 }
-.new-book{
+.section-dop2{
+    display: none;
+}
+.modal{
     position:fixed;
     display:flex;
     align-items:center;
@@ -126,19 +129,26 @@ main{
     height:100vh;
     background-color: #faf9f795;
 }
-.new-book__form{
+.book__form{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: 600px;
-    height: 400px;
+   
     background-color: var(--color-main);
     padding: 30px;
     border: 1px solid var(--color-border);
     box-shadow: 5px 5px 10px rgb(92, 91, 91);
     position: relative;
 }
-.new-book__form_close{
+.new-book__form{
+    width: 600px;
+    height: 400px;
+}
+.edit-book__form{
+    width: 400px;
+    height: 500px;
+}
+.book__form_close{
     position: absolute;
     top: 5px;
     right: 5px;
@@ -147,24 +157,24 @@ main{
     background-color: var(--color-main);
     color: grey;
 }
-.new-book__form_close:hover{
+.book__form_close:hover{
     color: var(--color-border);
     cursor: pointer;
 }
 
-.new-book__form_label{
+.book__form_label{
     font-size: 20px;
 }
-.new-book__form_input{
+.book__form_input{
     height: 30px;
     font-family: Raleway;
     font-size: 14px;
     font-weight: 400;
 }
-.new-book__form_input:focus{  
+.book__form_input:focus{  
     outline: none;  
 }
-.new-book__form_button{
+.book__form_button{
     margin-top: 50px;
     width: 200px;
     align-self: flex-end;
@@ -176,7 +186,7 @@ main{
     border: 1px solid rgb(55, 54, 54);
     color: var(--color-border);
 }
-.new-book__form_button:hover{
+.book__form_button:hover{
     background-color: var(--color-hover);
     cursor: pointer;
 }
