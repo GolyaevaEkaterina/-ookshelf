@@ -1,4 +1,5 @@
 let counter = 1
+let currentEditBookId 
 
 let books = [
     {
@@ -52,16 +53,25 @@ function renderBooks(){
          `
     })
 
-   // books.forEach((book) => {
-   //   const buttonDeleteBook = document.getElementById('deleteBook__button-${book.id}')
-   //   const makeDeleteBook = () => deleteBook(book.id)
-   //   buttonDeleteBook.addEventListener('click', makeDeleteBook)
-   // })
-}
+    books.forEach((book) => {
+      const buttonDeleteBook = document.getElementById(`deleteBook__button-${book.id}`)
+      const makeDeleteBook = () => deleteBook(book.id)
+      buttonDeleteBook.addEventListener('click', makeDeleteBook)
+
+      
+
+      const buttonOpenFormEditBook = document.getElementById(`editBook__Open-form-${book.id}`)
+      buttonOpenFormEditBook.addEventListener('click', () => {
+        currentEditBookId = book.id
+        openModalEditBook()
+      })
+    })
+
+  }
 
 function addToLocalStorage(){
     const booksJson = JSON.stringify (books)
-    localStorage.setItem("books", booksJson)  //Какая разница между "" и '' ?//
+    localStorage.setItem("books", booksJson) 
 }
 
 function openModalNewBook(){
@@ -76,7 +86,16 @@ function closeModalNewBook(){
 
 function openModalEditBook(){
     const bookEditForm = document.getElementById("editBook")
-    bookEditForm.style.display = "flex"   
+    bookEditForm.style.display = "flex"
+    
+    const book = books.find((b) => {
+      return b.id === currentEditBookId 
+    })
+
+    document.getElementById('bookTitleEdit').value = book.title
+    document.getElementById('bookAuthorEdit').value = book.authors
+    document.getElementById('bookYearEdit').value = book.year
+    document.getElementById('bookImageEdit').value = book.image
 }
 
 function closeModalEditBook(){
@@ -84,23 +103,52 @@ function closeModalEditBook(){
     bookEditForm.style.display = "none"   
 }
 
+function editBook(){
+  console.log(currentEditBookId)
+
+  const title = document.getElementById('bookTitleEdit').value
+  const author = document.getElementById('bookAuthorEdit').value
+  const year = document.getElementById('bookYearEdit').value
+  const image = document.getElementById('bookImageEdit').value
+  
+  const editedBook = {
+    id: currentEditBookId,
+    title: title,
+    authors: author,
+    year: year,
+    image: image,
+  }
+
+  const book = books.find((b) => {
+    return b.id === currentEditBookId
+  })
+  
+  const bookIndex = books.indexOf(book)
+
+  books.splice(bookIndex, 1, editedBook)
+
+  renderBooks()
+  closeModalEditBook()
+  addToLocalStorage()
+}
+
 function clearForm(){
     document.getElementById('bookTitle').value = ""
-    document.getElementById('bookAutor').value = ""
+    document.getElementById('bookAuthor').value = ""
     document.getElementById('bookYear').value = ""
     document.getElementById('bookImage').value = ""
 }
 
 function addBook(){
     const title = document.getElementById('bookTitle').value
-    const autor = document.getElementById('bookAutor').value
+    const author = document.getElementById('bookAuthor').value
     const year = document.getElementById('bookYear').value
     const image = document.getElementById('bookImage').value
   
     const book = {
       id: counter++,
       title: title,
-      authors: autor,
+      authors: author,
       year: year,
       image: image,
     }
@@ -149,7 +197,5 @@ buttonAddBook.addEventListener('click', addBook)
 const buttonCloseFormEditBook = document.getElementById('editBook__Close-button')
 buttonCloseFormEditBook.addEventListener('click', closeModalEditBook)
 
-
-//const buttonOpenFormEditBook = document.getElementById('editBook__Open-form-${book.id}')
-      //buttonOpenFormEditBook.addEventListener('click', openModalEditBook)//  -- не работает код
-
+const buttonEditBook = document.getElementById('editBook__button-add')
+buttonEditBook.addEventListener('click', editBook)
